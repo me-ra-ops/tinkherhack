@@ -203,21 +203,56 @@ body {
 
     <?php while($row = $result->fetch_assoc()): ?>
 
-        <div class="card">
-            <p><strong>Type:</strong> <?= ucfirst($row['type']) ?></p>
+    <?php
+        $statusClass = "pending";
 
-            <p>
-                <strong>Status:</strong>
-                <span class="status <?= $statusClass ?>">
-                    <?= strtoupper($row['status']) ?>
-                </span>
-            </p>
+        if($row['status'] == "approved_dean"){
+            $statusClass = "approved";
+        } elseif(strpos($row['status'], "rejected") !== false){
+            $statusClass = "rejected";
+        }
+    ?>
 
-            <p><strong>From:</strong> <?= date("d M Y, h:i A", strtotime($row['start_datetime'])) ?></p>
-            <p><strong>To:</strong> <?= date("d M Y, h:i A", strtotime($row['end_datetime'])) ?></p>
-        </div>
+    <div class="card">
+        <p><strong>Type:</strong> <?= ucfirst($row['type']) ?></p>
 
-    <?php endwhile; ?>
+        <p>
+            <strong>Status:</strong>
+            <span class="status <?= $statusClass ?>">
+                <?= strtoupper($row['status']) ?>
+            </span>
+        </p>
+
+        <p><strong>From:</strong>
+            <?= date("d M Y, h:i A", strtotime($row['start_datetime'])) ?>
+        </p>
+
+        <p><strong>To:</strong>
+            <?= date("d M Y, h:i A", strtotime($row['end_datetime'])) ?>
+        </p>
+
+        <?php if($row['status'] == 'pending_staff'): ?>
+            <form method="POST" style="margin-top:15px;">
+                <input type="hidden" name="request_id" value="<?= $row['id'] ?>">
+                <button type="submit" name="delete_request"
+                        style="
+                            background:#ff7a7a;
+                            color:white;
+                            border:none;
+                            padding:10px 16px;
+                            border-radius:8px;
+                            cursor:pointer;
+                            font-weight:bold;
+                        ">
+                    Delete Request
+                </button>
+            </form>
+        <?php endif; ?>
+
+    </div>
+
+<?php endwhile; ?>
+
 
 </div>
     </body>

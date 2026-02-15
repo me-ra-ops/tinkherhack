@@ -181,9 +181,9 @@ Form interface where students submit new leave requests by selecting type, club,
 
 ## Project Demo
 
-### Video
+### Video: https://drive.google.com/file/d/1Iof3vE4TSvLfL9L4dkEpoawr2JAWqRgQ/view?usp=drive_link
 
-The video demonstrates what does what, as in the workflow
+The video demonstrates what does what, as in, the workflow
 
 ---
 

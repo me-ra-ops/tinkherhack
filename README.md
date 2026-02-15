@@ -93,6 +93,9 @@ http://localhost/tinkherhack/
 * Log in using sample admin, staff, or dean credentials
 * Register a new student and approve via admin panel
 * Submit and process leave requests through workflow
+use tables
+![images](images/tables.png)
+![images](images/usertable.png)
 
 ## Project Documentation
 

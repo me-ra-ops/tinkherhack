@@ -69,6 +69,8 @@ if(isset($_POST['approve']) || isset($_POST['reject'])){
 <!DOCTYPE html>
 <html>
 <head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Dashboard</title>
     <style>* {
     box-sizing: border-box;
@@ -228,6 +230,95 @@ textarea {
     background: #2a315a;
     color: #f5a25d;
 }
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .sidebar h3 {
+        display: none;
+    }
+
+    .sidebar a {
+        margin: 0;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .stats {
+        flex-direction: column;
+    }
+
+    .stat-card {
+        margin-bottom: 15px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+@media (max-width: 600px) {
+
+    .card {
+        padding: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .approve, .reject {
+        width: 100%;
+    }
+}
+@media (max-width: 600px) {
+
+    .form-container {
+        width: 90%;
+        margin: 40px auto;
+        padding: 25px;
+    }
+
+    input, select, textarea {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
 </style>
 </head>
 <body><div class="sidebar">

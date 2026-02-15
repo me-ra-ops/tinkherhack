@@ -26,6 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Registration</title>
 
 <style>
@@ -38,16 +39,24 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background: radial-gradient(circle at top left, #162a4a, #0f1f3a);
     color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
+
 .form-container {
+    width: 100%;
     max-width: 520px;
-    margin: 80px auto;
     background: #1a2b4c;
     padding: 45px;
     border-radius: 20px;
     box-shadow: 0 30px 60px rgba(0,0,0,0.6);
 }
+
 
 h2 {
     margin-bottom: 35px;
@@ -114,6 +123,95 @@ button:hover {
 .hidden {
     display: none;
 }
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .sidebar h3 {
+        display: none;
+    }
+
+    .sidebar a {
+        margin: 0;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .stats {
+        flex-direction: column;
+    }
+
+    .stat-card {
+        margin-bottom: 15px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+@media (max-width: 600px) {
+
+    .card {
+        padding: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .approve, .reject {
+        width: 100%;
+    }
+}
+@media (max-width: 600px) {
+
+    .form-container {
+        width: 90%;
+        margin: 40px auto;
+        padding: 25px;
+    }
+
+    input, select, textarea {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
 </style>
 </head>
 

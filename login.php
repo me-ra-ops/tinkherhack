@@ -31,6 +31,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Login</title>
 
 <style>
@@ -50,7 +52,7 @@ body {
 
 .wrapper {
     width: 900px;
-    height: 550px;
+    /*height: 550px;*/
     display: flex;
     border-radius: 20px;
     overflow: hidden;
@@ -135,6 +137,56 @@ button {
 
 .register-link a:hover {
     color: #ffb870;
+}
+/* ================= MOBILE FIX ================= */
+
+@media (max-width: 768px) {
+
+    body {
+        height: 100vh;
+        padding: 20px;
+    }
+
+    .wrapper {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .right {
+        display: none;
+    }
+
+    .left {
+        width: 100%;
+        max-width: 400px;
+        padding: 40px 25px;
+        border-radius: 16px;
+    }
+
+    .register-link {
+        margin-top: 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .left h2 {
+        font-size: 22px;
+    }
+
+    input {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 14px;
+    }
 }
 
 </style>

@@ -25,11 +25,26 @@ if(isset($_POST['approve'])){
     exit();
 }
 
+/* Handle rejection */
+if(isset($_POST['reject'])){
+    $student_id = $_POST['student_id'];
+
+    $update = $conn->prepare("UPDATE users SET status='rejected' WHERE id=?");
+    $update->bind_param("i", $student_id);
+    $update->execute();
+
+    header("Location: dashboard.php");
+    exit();
+}
+
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Admin Dashboard</title>
 
 <style>
@@ -85,6 +100,95 @@ button:hover {
 .logout {
     margin-top: 40px;
 }
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .sidebar h3 {
+        display: none;
+    }
+
+    .sidebar a {
+        margin: 0;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .main {
+        padding: 20px;
+    }
+
+    .stats {
+        flex-direction: column;
+    }
+
+    .stat-card {
+        margin-bottom: 15px;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+@media (max-width: 600px) {
+
+    .card {
+        padding: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+
+    .btn {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+
+    textarea {
+        font-size: 14px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .approve, .reject {
+        width: 100%;
+    }
+}
+@media (max-width: 478px) {
+
+    .form-container {
+        width: 90%;
+        margin: 40px auto;
+        padding: 25px;
+    }
+
+    input, select, textarea {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
 </style>
 </head>
 
@@ -106,11 +210,23 @@ button:hover {
         <p><strong>Admission No:</strong> <?= $student['username'] ?></p>
         <p><strong>Role:</strong> <?= $student['role'] ?></p>
 
-        <form method="POST">
-            <input type="hidden" name="student_id" value="<?= $student['id'] ?>">
+        <form method="POST" style="margin-top:15px;">
+    <input type="hidden" name="student_id" value="<?= $student['id'] ?>">
 
-            <button name="approve">Approve</button>
-        </form>
+    <button name="approve"
+        style="background:#7CFFB2; color:#0f1f3a; border:none;
+               padding:8px 14px; border-radius:8px; cursor:pointer; margin-right:10px;">
+        Approve
+    </button>
+
+    <button name="reject"
+        style="background:#ff7a7a; color:white; border:none;
+               padding:8px 14px; border-radius:8px; cursor:pointer;">
+        Reject
+    </button>
+</form>
+
+
     </div>
 <?php endwhile; ?>
 
